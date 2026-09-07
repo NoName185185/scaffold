@@ -3,11 +3,13 @@
 Здесь живут контекст, спеки, описание реализации и журнал разработки.
 Код — в `backend/`, `frontend/` и `docker-compose.yml`. Этот каталог — для людей и агентов, которые продолжают работу.
 
+**Контекст продукта (канон):** [context/README.md](context/README.md) — синтез `ProjectOld.md` и `ProjectNew.md`. Черновики ТЗ в `implementation/` не перебивают его.
+
 ## Карта папок
 
 | Папка | Назначение |
 | --- | --- |
-| [context/](context/README.md) | Скриншоты, мокапы, примеры JSON, чужие референсы |
+| [context/](context/README.md) | Контекст проекта; скриншоты, примеры, референсы |
 | [implementation/](implementation/README.md) | Как устроено сейчас: API, БД, фронт, Docker |
 | [specs/](specs/README.md) | Требования, архитектура, роадмап |
 | [changelog/](changelog/CHANGELOG.md) | Версии и пользовательски заметные изменения |
@@ -23,7 +25,7 @@
 
 ## Стек (кратко)
 
-University Board: анонимные доски для университета.
+University Board: университетский борда с **публичной** анонимностью (скрытие автора в API) и аккаунтами в БД.
 
 - Backend: Node.js, Express, Prisma, PostgreSQL
 - Frontend: Vue 3, Vite, Axios

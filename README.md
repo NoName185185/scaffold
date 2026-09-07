@@ -4,7 +4,7 @@ Backend: Node.js (Express) + Prisma + PostgreSQL
 Frontend: Vue 3 + Vite
 Инфраструктура: Docker Compose
 
-Документация, спеки, примеры и dev-log: каталог [`Doc/`](Doc/README.md).
+Документация, спеки, примеры и dev-log: каталог [`Doc/`](Doc/README.md). Контекст продукта: [`Doc/context/README.md`](Doc/context/README.md).
 
 ## Структура
 
