@@ -1,28 +1,28 @@
 # Архитектура (целевая)
 
-Текущий снимок кода: `Doc/implementation/`. Здесь — направление, не обещание сроков.
+Снимок кода: `Doc/implementation/`. План внедрения слоёв: [implementation-plan.md](implementation-plan.md).
 
 ## Границы
 
-- **frontend** — SPA, только HTTP к `/api`
-- **backend** — REST, бизнес-правила, позже auth и загрузка файлов
-- **db** — источник правды
-- **AI-модуль** (план) — отдельный роут вроде `/api/ai/moderate`, внешний Ollama/OpenRouter, не в критическом пути чтения ленты
+- **frontend** — SPA, только HTTP к `/api`, JWT в заголовке
+- **backend** — REST, auth, сериализация анонимности, позже файлы и AI
+- **db** — источник правды; автор поста всегда как `User`
+- **AI** — внешний HTTP (Ollama/OpenRouter), не в критическом пути публикации
 
-## Будущие слои backend
+## Слои backend
 
-Имеет смысл, когда появятся auth и загрузки:
+1. `db.js` — один PrismaClient
+2. Роуты — HTTP и коды
+3. Middleware — `attachUser`, `requireAuth`, `requireRole`, позже rate-limit
+4. `lib/serialize*` — скрытие `author` при `isAnonymous`, исключение moderator/admin
+5. Позже: баны перед create, опциональный AI-роут
 
-1. Роуты — HTTP и коды
-2. Сервисы — правила (бан, уникальность голоса)
-3. Один `PrismaClient`
-4. Middleware: rate-limit, JWT для `/mod` и мутаций досок
+Модель `Moderator` не целевая. Целевая: `User.role`.
 
 ## Файлы
 
-- Картинки: сначала диск `/uploads` за nginx/Express, затем S3-совместимое хранилище
-- `imageUrl` уже есть в схеме — менять модель не обязательно на первом шаге
+Сначала диск `backend/uploads` + static `/uploads`. S3 — только если диск уже есть и это явно нужно.
 
 ## Фронт
 
-Vue Router: список досок, лента `/:slug`, страница поста, `/mod` за JWT. Убрать хардкод `study`.
+Vue Router: `/`, `/b/:slug`, `/b/:slug/:postId`, `/login`, `/register`, `/mod`.

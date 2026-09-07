@@ -6,6 +6,8 @@
 
 - [product.md](product.md) — продукт и пользователи
 - [architecture.md](architecture.md) — целевая архитектура
-- [roadmap.md](roadmap.md) — очередь работ
+- [implementation-plan.md](implementation-plan.md) — план недостающего (этапы 0–9)
+- [roadmap.md](roadmap.md) — статус очереди
+
 
 Новая фича: `specs/<имя>.md` + ссылка из этого файла.

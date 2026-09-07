@@ -11,7 +11,7 @@
 | --- | --- |
 | [context/](context/README.md) | Контекст проекта; скриншоты, примеры, референсы |
 | [implementation/](implementation/README.md) | Как устроено сейчас: API, БД, фронт, Docker |
-| [specs/](specs/README.md) | Требования, архитектура, роадмап |
+| [specs/](specs/README.md) | Требования, архитектура, [план реализации](specs/implementation-plan.md), роадмап |
 | [changelog/](changelog/CHANGELOG.md) | Версии и пользовательски заметные изменения |
 | [dev-log/](dev-log/README.md) | Дневник сессий: что сделали, почему, что осталось |
 
