@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "url": "http://localhost:4000/api/boards/study/posts",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "title": "Дедлайн по лабе",
+    "body": "Кто сдаёт до пятницы?",
+    "imageUrl": null,
+    "authorHash": "anon-demo-hash"
+  },
+  "notes": "authorHash пока передаётся с клиента. Загрузка файлов не реализована: imageUrl — строка или null."
+}

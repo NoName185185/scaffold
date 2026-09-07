@@ -1,0 +1,17 @@
+{
+  "method": "POST",
+  "url": "http://localhost:4000/api/boards",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "slug": "study",
+    "title": "Учёба"
+  },
+  "expectedStatus": 201,
+  "expectedBodyShape": {
+    "id": 1,
+    "slug": "study",
+    "title": "Учёба"
+  }
+}
