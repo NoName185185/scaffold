@@ -1,8 +1,7 @@
 import { Router } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../db.js';
 
 const router = Router();
-const prisma = new PrismaClient();
 
 // GET /api/boards/:slug/posts — все посты доски
 router.get('/boards/:slug/posts', async (req, res) => {

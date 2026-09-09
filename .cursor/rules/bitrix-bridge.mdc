@@ -1,0 +1,23 @@
+---
+description: Обязательный semver bump версии PHP-моста product.php
+globs: bitrix/public/local/components/ruba/api/product.php
+alwaysApply: false
+---
+
+# Версия PHP-моста
+
+Файл: `bitrix/public/local/components/ruba/api/product.php`.
+
+Формат: semver `MAJOR.MINOR.PATCH` + `BRIDGE_VERSION_DATE` (`YYYY-MM-DD`).
+
+При смысловом изменении файла **обязательно** bump по `.ai/rules/ComponentVersions.md`:
+
+1. **PATCH** — агент сам; обновить дату.
+2. **MINOR** — спросить человека.
+3. **MAJOR** — только человек.
+
+Не «+1 к счётчику» — только semver.
+
+Дифф без bump → на code-review **CHANGES_REQUESTED**.
+
+Подробности: `.ai/rules/BitrixBridge.md`.

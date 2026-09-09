@@ -13,10 +13,12 @@
 1. CORS: `CORS_ORIGIN` или `http://localhost:5173`
 2. `express.json()`
 3. `GET /api/health` → `{ status: "ok" }`
-4. ` /api/boards` → `routes/boards.js`
-5. `/api` → `routes/posts.js` (посты, голоса, комментарии)
+4. `attachUser` на `/api` (опциональный JWT → `req.user`)
+5. `/api/auth` → `routes/auth.js`
+6. `/api/boards` → `routes/boards.js`
+7. `/api` → `routes/posts.js` (посты, голоса, комментарии)
 
-Отдельного слоя сервисов нет: роуты ходят в Prisma напрямую. В каждом роутере создаётся свой `PrismaClient` — для каркаса нормально, при росте лучше вынести один клиент.
+Один `PrismaClient` в `src/db.js`. Создание доски и удаление поста пока без `requireAuth`.
 
 ## Роуты досок (`boards.js`)
 

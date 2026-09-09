@@ -10,6 +10,18 @@
 | --- | --- | --- |
 | GET | `/health` | `{ "status": "ok" }` |
 
+## Auth
+
+Лента и чтение постов без токена. `Authorization: Bearer <jwt>` нужен для `/auth/me`.
+
+| Метод | Путь | Тело | Статус |
+| --- | --- | --- | --- |
+| POST | `/auth/register` | `{ login, password }` | 201 `{ token, user }` или 400 |
+| POST | `/auth/login` | `{ login, password }` | 200 `{ token, user }` или 401 |
+| GET | `/auth/me` | — | 200 `{ id, login, role }` или 401 |
+
+`login`: 3–32 символа `[a-zA-Z0-9._-]`. Пароль от 6 символов. Роль при регистрации всегда `user`. JWT ~7 дней.
+
 ## Доски
 
 | Метод | Путь | Тело | Статус |

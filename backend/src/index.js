@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import { attachUser } from './middleware/attachUser.js';
+import authRouter from './routes/auth.js';
 import boardsRouter from './routes/boards.js';
 import postsRouter from './routes/posts.js';
 
@@ -12,6 +14,8 @@ app.use(express.json());
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
+app.use('/api', attachUser);
+app.use('/api/auth', authRouter);
 app.use('/api/boards', boardsRouter);
 app.use('/api', postsRouter);
 

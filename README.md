@@ -31,10 +31,21 @@ Frontend: Vue 3 + Vite
    docker-compose up --build
    ```
 
-3. Применить миграции БД (в отдельном терминале, пока контейнеры работают):
+3. Миграции БД (контейнеры должны быть запущены).
+
+   Первая миграция `init` уже лежит в `backend/prisma/migrations/`. **Не запускайте снова** `migrate dev --name init` — схема не менялась, Prisma ответит `Already in sync` или упрётся в уже существующую миграцию.
+
+   Применить уже созданные миграции:
    ```
-   docker-compose exec backend npx prisma migrate dev --name init
+   docker compose exec -T backend npx prisma migrate deploy
    ```
+
+   Новая миграция — только после правок `schema.prisma`, с **другим** именем:
+   ```
+   docker compose exec -T backend npx prisma migrate dev --name auth_and_anonymous
+   ```
+
+   Флаг `-T` нужен в PowerShell/CI: без него `exec` часто падает с `the input device is not a TTY`. Команда должна идти в контейнер, не с хоста: в `DATABASE_URL` хост `db`, Windows его не резолвит.
 
 4. Открыть:
    - Frontend: http://localhost:5173

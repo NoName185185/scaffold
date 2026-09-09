@@ -1,0 +1,21 @@
+---
+description: Semver bump bridge / backend / webapp при смысловых изменениях
+globs: bitrix/public/local/components/ruba/api/product.php,backend/app/**,webapp/**
+alwaysApply: false
+---
+
+# Версии компонентов (semver)
+
+Независимые версии: bridge (`product.php`), backend (`app/version.py`), webapp (`package.json` → `/version.json`).
+
+При смысловом изменении компонента:
+
+1. **PATCH** — агент сам (`PATCH + 1` + дата).
+2. **MINOR** — только после вопроса человеку (новая обратно совместимая фича).
+3. **MAJOR** — только человек; агент не поднимает.
+
+Bump только изменённого компонента. Причина — в `DevLog.md` фичи.
+
+Смысловой дифф без bump → на code-review **CHANGES_REQUESTED**.
+
+Подробности: `.ai/rules/ComponentVersions.md`.

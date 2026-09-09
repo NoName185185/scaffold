@@ -1,0 +1,22 @@
+---
+description: Перед commit и push всегда подтягивать origin/staging
+alwaysApply: true
+---
+
+# Git: синхронизация со staging
+
+Перед **каждым** `git commit` и **каждым** `git push` на текущей ветке:
+
+```bash
+git fetch origin staging
+git pull origin staging
+```
+
+Если работа идёт не на `staging`, после `fetch` влить staging в рабочую ветку без force:
+
+```bash
+git fetch origin staging
+git merge origin/staging
+```
+
+Не коммитить и не пушить, пока merge-конфликты не сняты. Не использовать `--force` к `main`/`staging`.

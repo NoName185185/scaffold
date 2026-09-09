@@ -38,14 +38,27 @@
 
 ### Moderator
 
-Заготовка под будущий auth: `login` unique, `passwordHash`, `role` (`moderator` \| `admin`). В API не используется.
+Заготовка под старое ТЗ. В API не используется.
+
+### User
+
+| Поле | Тип | Заметки |
+| --- | --- | --- |
+| id | Int, PK | |
+| login | String, unique |  |
+| passwordHash | String | bcrypt |
+| role | String, default `user` | пока все новые — `user` |
+| createdAt | DateTime | |
+
+Связи с Post/Comment ещё нет (`authorHash` на постах остаётся).
 
 ## Миграции
 
-После первого `docker-compose up`:
+Уже в репозитории: `init`, `add_user`. Применить:
 
 ```bash
-docker-compose exec backend npx prisma migrate dev --name init
+docker compose exec -T backend npx prisma migrate deploy
+docker compose exec -T backend npx prisma db seed
 ```
 
-Пока в репозитории может не быть готовой папки `prisma/migrations` — применяйте миграцию при первом запуске и коммитьте результат.
+Сид идемпотентный: доска `study` и два демо-поста, если лента пустая.

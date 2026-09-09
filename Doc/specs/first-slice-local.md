@@ -64,7 +64,7 @@ docker-compose exec backend npm install bcryptjs jsonwebtoken
 - `onDelete` для комментариев при удалении поста: `Cascade` (иначе `DELETE` поста упадёт).
 
 ```text
-docker-compose exec backend npx prisma migrate dev --name auth_and_anonymous
+docker compose exec -T backend npx prisma migrate dev --name auth_and_anonymous
 ```
 
 Сиды (скрипт или Studio): пользователь `admin` / `user`, доска `study`. Без доски лента пустая; без admin нельзя создать доску через API.
@@ -150,7 +150,7 @@ cp frontend/.env.example frontend/.env
 docker-compose up --build
 
 docker-compose exec backend npm install bcryptjs jsonwebtoken
-docker-compose exec backend npx prisma migrate dev --name auth_and_anonymous
+docker compose exec -T backend npx prisma migrate dev --name auth_and_anonymous
 # сид admin + board study
 ```
 

@@ -22,6 +22,7 @@ services:
       - DATABASE_URL=postgresql://forum:forum@db:5432/forum
       - CORS_ORIGIN=http://localhost:5173
       - PORT=4000
+      - JWT_SECRET=${JWT_SECRET:-dev-only-change-me-to-a-long-random-string}
     volumes:
       - ./backend:/app
       - /app/node_modules

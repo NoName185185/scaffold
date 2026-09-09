@@ -1,0 +1,15 @@
+---
+description: Стандарты backend RUBA AI OS — архитектура, стиль кода, тесты
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# Стандарты backend
+
+Перед изменением кода в `backend/` прочитай и соблюдай:
+
+- Архитектура и границы слоёв: `.ai/rules/Architecture.md`
+- Стиль кода (ruff, типы, SQLAlchemy 2.0, Pydantic v2): `.ai/rules/CodeStyle.md`
+- Тесты (pytest, моки, без Docker/сети): `.ai/rules/TestingHints.md`
+
+Перед сдачей: `cd backend && ruff check . && pytest -q`.
